@@ -1,64 +1,51 @@
-let questions = [
-    {
-        "question": "Wer hat 2022 den Ballon d'Or gewonnen",
-        "answer_1": "Cristiano Ronaldo",
-        "answer_2": "Erling Haalnd",
-        "answer_3": "Karim Benzema",
-        "answer_4": "Lionel Messi",
-        "right_answer": 3
-    },
+//DEFINING GLOBAL VARIABLES
+let currentQuestion = 0;
 
-    {
-        "question": "Welche Nation wurde 2014 Weltmeister?",
-        "answer_1": "Frankreich",
-        "answer_2": "Deutschland",
-        "answer_3": "Spanien",
-        "answer_4": "Italien",
-        "right_answer": 2
-    },
 
-    {
-        "question": "Welche Mannschaft holte im Jahr 2012 das Double in Deutschland?",
-        "answer_1": "Borussia Mönchengladbach",
-        "answer_2": "FC Bayern München",
-        "answer_3": "Borussia Dortmund",
-        "answer_4": "Werder Bremen",
-        "right_answer": 3
-    },
+//HELP FUNCTIONS
+function getElement(id) {
+    return document.getElementById(id);
+}
 
-    {
-        "question": "Wer ist der teurste Transfer der Fußballgeschichte?",
-        "answer_1": "Neymar Jr.",
-        "answer_2": "Kylian Mbappé",
-        "answer_3": "Jack Grealish",
-        "answer_4": "João Félix",
-        "right_answer": 1
-    },
+//MAIN FUNCTIONALITY
+function init(){
+    getElement("all-questions").innerHTML = questions.length;
 
-    {
-        "question": "Welche Mannschaft ist Rekordsieger der Champions League?",
-        "answer_1": "FC Bayern München",
-        "answer_2": "AC Mailand",
-        "answer_3": "FC Liverpool",
-        "answer_4": "Real Madrid",
-        "right_answer": 4
-    },
+    showQuestion();
+}
 
-    {
-        "question": "Wie lautet der Weltfußballverband, mit Sitz in der Schweiz?",
-        "answer_1": "BBVA",
-        "answer_2": "UEFA",
-        "answer_3": "DFB",
-        "answer_4": "FIFA",
-        "right_answer": 1
-    },
+function showQuestion() {
+    let question = questions[currentQuestion];
 
-    {
-        "question": "Welche Mannschaft gewann 2016 die Premier League?",
-        "answer_1": "Manchester City",
-        "answer_2": "Leicester City",
-        "answer_3": "Arsenal",
-        "answer_4": "FC Chelsea",
-        "right_answer": 2
-    },
-];
+    getElement("questiontext").innerHTML = question['question'];
+    getElement("answer_1").innerHTML = question['answer_1'];
+    getElement("answer_2").innerHTML = question['answer_2'];
+    getElement("answer_3").innerHTML = question['answer_3'];
+    getElement("answer_4").innerHTML = question['answer_4'];
+    
+}
+
+function answer(selection){                         // slection = string of id as parameter
+    let question = questions[currentQuestion];
+
+    console.log('Current question is ', question);  //looging question
+
+    console.log('Selected answer is ', selection);   //logging selection
+
+    let selectedQuestionNumber = +selection.slice(-1);  //getting last char of selection as number
+
+    console.log('Selected Question number ist ', selectedQuestionNumber);  //logging answer as number
+    
+    console.log('Correct answer ist ', question['right_answer']);  //logging correct answer
+
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
+
+    if (selectedQuestionNumber == question['right_answer']) {
+        console.log('RICHTIG');
+        getElement(selection).parentNode.classList.add('bg-success');
+    } else {
+        console.log('FALSCH');
+        getElement(selection).parentNode.classList.add('bg-danger');
+        getElement(idOfRightAnswer).parentNode.classList.add('bg-success');
+    }
+}

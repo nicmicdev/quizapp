@@ -1,6 +1,8 @@
 //DEFINING GLOBAL VARIABLES
 let currentQuestion = 0;
 let correctAnswers = 0;
+let AUDIO_SUCCESS = new Audio ('audio/correct.mp3');
+let AUDIO_FAIL = new Audio ('audio/wrong.mp3');
 
 
 //HELP FUNCTIONS
@@ -47,7 +49,7 @@ function showQuestion() {
     }
 }
 
-function answer(selection) {                         // slection = string of id as parameter
+function answer(selection) {                         // selection = string of id as parameter
     let question = questions[currentQuestion];
 
     console.log('Current question is ', question);  //looging question
@@ -66,18 +68,22 @@ function answer(selection) {                         // slection = string of id 
         console.log('RICHTIG');
         getElement(selection).parentNode.classList.add('bg-success');
         correctAnswers++;
+        AUDIO_SUCCESS.play();
     } else {
         console.log('FALSCH');
         getElement(selection).parentNode.classList.add('bg-danger');
         getElement(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     getElement('next-button').disabled = false;
+    getElement('question-container').classList.add('pointer-events-none');
 }
 
 function nextQuestion() {
     currentQuestion++;
     getElement('next-button').disabled = true;
     resetAnswerButtons();
+    getElement('question-container').classList.remove('pointer-events-none');
     showQuestion();
 }
 

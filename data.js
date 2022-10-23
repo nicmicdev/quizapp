@@ -50,7 +50,7 @@ let questions = [
         "answer_2": "UEFA",
         "answer_3": "DFB",
         "answer_4": "FIFA",
-        "right_answer": 1
+        "right_answer": 4
     },
 
     {

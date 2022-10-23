@@ -30,3 +30,22 @@ body {
 .bg-success, .bg-danger {
     color: white;
 }
+
+.width-100 {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.final-headline {
+    font-size: 32px;
+    margin-bottom: 22px;
+}
+
+.button-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}

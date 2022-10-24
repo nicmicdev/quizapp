@@ -1,13 +1,18 @@
 body {
-    background-color: #007AFF !important;
+    background-color: #212529 !important;
 }
 
 .container {
     min-height: 100vh;
-    background-color: #007AFF !important;
+    background-color: #212529 !important;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.progress {
+    border-radius: 0px !important;
+    --bs-progress-bar-bg: salmon !important;
 }
 
 .quiz-card {
@@ -22,12 +27,27 @@ body {
     padding-top: 12px;
 }
 
+.button-design {
+    background-color: salmon !important;
+    border: none !important;
+}
+
+.button-restart {
+    background-color: seagreen !important;
+    border: none !important;
+}
+
+.bg-danger {
+    color: white;
+    --bs-bg-opacity: 0.85 !important;
+}
+
 .quiz-answer-card:hover {
     cursor: pointer;
     background-color: rgba(0,0,0,0.1);
 }
 
-.bg-success, .bg-danger {
+.bg-success {
     color: white;
 }
 
